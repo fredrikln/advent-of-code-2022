@@ -45,15 +45,19 @@ rucksackloop:
 }
 
 func findCommonItemForTwoStrings(a, b string) string {
-	out := ""
+	commonItems := make(map[rune]bool)
 
 	for _, char := range b {
-		if strings.Index(a, string(char)) != -1 {
-			out = out + string(char)
+		if strings.Contains(a, string(char)) {
+			commonItems[char] = true
 		}
 	}
 
-	// fmt.Println(out)
+	out := ""
+
+	for key := range commonItems {
+		out += string(key)
+	}
 
 	return out
 }
@@ -63,7 +67,7 @@ func findCommonItemForGroup(rucksacks []string) string {
 
 	inABandC := findCommonItemForTwoStrings(inAandB, rucksacks[2])
 
-	return string([]rune(inABandC)[0])
+	return inABandC
 }
 
 func splitIntoGroupsOfThree(items []string) [][]string {
