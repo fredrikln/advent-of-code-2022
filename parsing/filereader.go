@@ -48,3 +48,9 @@ func ReadFirstLineToIntSlice(filename string) []int {
 
 	return stringSliceToIntSlice(values)
 }
+
+func ReadFirstLineToString(filename string) string {
+	line := readfile(filename)
+
+	return line
+}
